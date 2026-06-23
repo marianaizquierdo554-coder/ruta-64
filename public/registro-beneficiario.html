@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro Beneficiario - Ruta 64</title>
+    <meta charset="UTF-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #5E1A2F 0%, #7A243E 100%);
+            min-height: 100vh;
+        }
+        .navbar {
+            background: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5E1A2F;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #5E1A2F;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            background: #5E1A2F;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover { background: #7A243E; }
+        .footer { text-align: center; margin-top: 20px; color: white; }
+        .footer a { color: #C6A43F; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="logo">Ruta 64</a>
+        <div>
+            <a href="/sign-in" style="margin-right: 15px; color: #5E1A2F; text-decoration: none;">Entrar</a>
+            <a href="/seleccionar-rol" style="background: #5E1A2F; color: white; padding: 8px 20px; border-radius: 20px; text-decoration: none;">Donar $1</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h1>Registro de Beneficiario</h1>
+            <p class="subtitle">Completa tus datos para recibir apoyo</p>
+            
+            <form id="registroForm">
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                <input type="text" id="curp" placeholder="CURP" required>
+                <input type="email" id="email" placeholder="Correo electrónico" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" required>
+                <select id="tipo">
+                    <option value="">Tipo de beneficiario</option>
+                    <option>Estudiante</option>
+                    <option>Investigador</option>
+                    <option>Creador</option>
+                    <option>Emprendedor</option>
+                    <option>Salud</option>
+                </select>
+                <input type="text" id="institucion" placeholder="Institución / Universidad">
+                <select id="estado">
+                    <option value="">Estado</option>
+                    <option>CDMX</option><option>Jalisco</option><option>Nuevo León</option>
+                    <option>Puebla</option><option>Veracruz</option><option>Guanajuato</option>
+                </select>
+                <input type="number" id="meta" placeholder="Meta de recaudación (MXN)">
+                <textarea id="historia" rows="3" placeholder="Cuéntanos tu historia"></textarea>
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+        <div class="footer">
+            <p>¿Ya tienes cuenta? <a href="/sign-in">Inicia sesión</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirm) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+            
+            alert(' Registro enviado. Tu perfil será validado por el administrador.');
+            window.location.href = '/';
+        });
+    </script>
+</body>
+</html>
